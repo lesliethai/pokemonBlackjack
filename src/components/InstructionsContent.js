@@ -1,11 +1,6 @@
-const InstructionsContent = ({ displayInstructions, setDisplayInstructions }) => {
-
-  const handleClick = () => {
-    setDisplayInstructions(!displayInstructions);
-  }
+const InstructionsContent = () => {
 
   return (
-    <div onClick={handleClick} className="instructionsParent">
       <div className="dialogueBoxWrapper instructions">
         <h2>How to play:</h2>
         <ul>
@@ -14,7 +9,6 @@ const InstructionsContent = ({ displayInstructions, setDisplayInstructions }) =>
           <li><span className="controlSpan">Stand</span> - stops the card draw and moves on to another player or ends the game</li>
         </ul>
       </div>
-    </div>
   )
 }
 

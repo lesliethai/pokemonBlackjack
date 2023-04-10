@@ -9,13 +9,12 @@ const Instructions = ({ gameState, quitHandler, startGameHandler, setDisplayInst
 
   return (
     <section className="instructionsContainer wrapper">
-
-      {/* instructions: displays when state is set to true */}
-      {
-        displayInstructions
-          ? <InstructionsContent displayInstructions={displayInstructions} setDisplayInstructions={setDisplayInstructions} />
-          : null
-      }
+        {/* instructions: displays when state is set to true */}
+        {
+          displayInstructions
+            ? <div onClick={handleClick}className="instructionsParent"><InstructionsContent /></div>
+            : null
+        }
 
       {/* disable button access if game has not started yet */}
       <button className="instructionsButton" onClick={() => { handleClick() }} disabled={!gameState}>{displayInstructions ? "x" : "?"}</button>

@@ -10,18 +10,24 @@ import { useState, useEffect } from 'react';
 const GameContainer = () => {
   // state to track game start
   const [gameStart, setGameStart] = useState(false);
-
+  
   // initialize state for displaying of instructions set to false  
   const [displayInstructions, setDisplayInstructions] = useState(false);
-  //
+  
+  // state for saving poke data to pass to player component as props
+  const [pokemonPlayerOneFam, setPokemonPlayerOneFam] = useState([]);
+  const [pokemonPlayerTwoFam, setPokemonPlayerTwoFam] = useState([]);
+  const [pokemonPlayerOne, setPokemonPlayerOne] = useState([]);
+  const [pokemonPlayerTwo, setPokemonPlayerTwo] = useState([]);
+  
+  // state to track card draw and player hand
+  const [deck, setDeck] = useState([]);
+  const [playerOneHand, setPlayerOneHand] = useState([]);
+  const [playerTwoHand, setPlayerTwoHand] = useState([]);
+  const [currentPlayer, setCurrentPlayer] = useState('none');
+  const [result, setResult] = useState('Draw a card!');
+  const [winner, setWinner] = useState('none');
 
-  // API calls wrapped in useEffect to request data and save the response into state that will be passed down to corresponding components as props
-  // function for determining the total of PlayerCards array and comparing them
-  // when there is a winner render Results.js component of corresponding player
-  // updates piece of state {winningPokemonId} adds 1 and calls the pokemon API with that id in the params 
-  //
-
-  // FILTERING FOR POKEMON THAT MEET THE CRITERIA OF 1ST OF 3 EVOLVED STATES
   // array of available pokemon selection
   const pokemonPool = [
     [1, 2, 3],
@@ -53,14 +59,6 @@ const GameContainer = () => {
   while (pokeFam2.some(pokemon => pokeFam.includes(pokemon))) {
     pokeFam2 = randomizer(pokemonPool);
   }
-
-  // INITIAL POKEMON API CALL
-  // state for saving poke data to pass to player component as props
-  const [pokemonPlayerOneFam, setPokemonPlayerOneFam] = useState([]);
-  const [pokemonPlayerTwoFam, setPokemonPlayerTwoFam] = useState([]);
-  const [pokemonPlayerOne, setPokemonPlayerOne] = useState([]);
-  const [pokemonPlayerTwo, setPokemonPlayerTwo] = useState([]);
-
 
   useEffect(() => {
 
@@ -113,16 +111,6 @@ const GameContainer = () => {
 
 
   }, [gameStart]);
-
-
-  // API CALL TO GET THE DECK OF CARDS FOR THE HAND
-  // state to track card draw and player hand
-  const [deck, setDeck] = useState([]);
-  const [playerOneHand, setPlayerOneHand] = useState([]);
-  const [playerTwoHand, setPlayerTwoHand] = useState([]);
-  const [currentPlayer, setCurrentPlayer] = useState('none');
-  const [result, setResult] = useState('Draw a card!');
-  const [winner, setWinner] = useState('none');
 
   // deck of cards api call
   useEffect(() => {
