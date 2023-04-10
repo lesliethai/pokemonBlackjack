@@ -269,7 +269,7 @@ span {
 }
 
 body {
-  background: url(../assets/pokemon_bg.png);
+  background: url("https://wallpapers.com/images/hd/pokemon-emerald-green-setting-hgox2c1ebjwek0xg.jpg") center;
   background-color: rgb(125, 173, 113);
   background-size: cover;
   background-repeat: no-repeat;
@@ -520,19 +520,8 @@ footer {
   text-align: center;
 }
 .playerContainer:first-child .displayPoke img {
-  -webkit-animation-duration: 3s;
-          animation-duration: 3s;
-  -webkit-animation-name: slideFromLeft;
-          animation-name: slideFromLeft;
-}
-
-@-webkit-keyframes slideFromLeft {
-  from {
-    margin-left: -150%;
-  }
-  to {
-    margin-left: 0%;
-  }
+  animation-duration: 3s;
+  animation-name: slideFromLeft;
 }
 
 @keyframes slideFromLeft {
@@ -552,19 +541,8 @@ footer {
   text-align: center;
 }
 .playerContainer:nth-child(2) .displayPoke img {
-  -webkit-animation-duration: 3s;
-          animation-duration: 3s;
-  -webkit-animation-name: slideFromRight;
-          animation-name: slideFromRight;
-}
-
-@-webkit-keyframes slideFromRight {
-  from {
-    margin-left: 150%;
-  }
-  to {
-    margin-left: 0%;
-  }
+  animation-duration: 3s;
+  animation-name: slideFromRight;
 }
 
 @keyframes slideFromRight {
@@ -658,7 +636,7 @@ footer {
     max-width: 145px;
   }
   .players .displayPoke h3,
-.players .displayPoke h4 {
+  .players .displayPoke h4 {
     font-size: 15px;
     font-size: 0.75rem;
   }
@@ -669,7 +647,7 @@ footer {
     flex-direction: row;
   }
   .players .playerOneUl,
-.players .playerTwoUl {
+  .players .playerTwoUl {
     width: 100%;
   }
   .players .playerCards .card {
