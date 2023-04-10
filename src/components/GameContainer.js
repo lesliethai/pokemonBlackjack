@@ -290,40 +290,35 @@ const GameContainer = () => {
   return (
     <main>
       <Instructions gameState={gameStart} quitHandler={quitHandler} startGameHandler={startGameHandler} setDisplayInstructions={setDisplayInstructions} displayInstructions={displayInstructions} />
+
       {gameStart
-        ? <Results result={result} winner={winner} playerOnePokemon={pokemonPlayerOne} playerTwoPokemon={pokemonPlayerTwo} currentPlayer={currentPlayer} gameStart={gameStart} quitHandler={quitHandler} evolve={evolve} />
-        : null
-      }
+        ? 
+          <>
+            <Results result={result} winner={winner} playerOnePokemon={pokemonPlayerOne} playerTwoPokemon={pokemonPlayerTwo} currentPlayer={currentPlayer} gameStart={gameStart} quitHandler={quitHandler} evolve={evolve} />
+          
+            {/* when game state is true, render Controller component*/}
+            <section className='controller'>
+              <div className='wrapper'>
+                <Controller hitButton={hitHandler} stayButton={stayHandler} winner={winner} result={result} quitHandler={quitHandler} evolve={evolve} />
+              </div>
+            </section>
 
-      {/* display instructions on default. on game start, remove instructions display and display players*/}
-      {/* when game state is true, render Controller component*/}
-      {
-        gameStart
-          ? <section className='controller'>
-            <div className='wrapper'>
-              <Controller hitButton={hitHandler} stayButton={stayHandler} winner={winner} result={result} quitHandler={quitHandler} evolve={evolve} />
-            </div>
-          </section>
-          : null
-      }
-
-      {
-        gameStart
-          ? <section className='players'>
-            <div className='wrapper'>
-              <ul className='playerUl'>
-                <li className="playerOneUl">
-                  <p className="playerLabel">player one</p>
-                  <Player pokeData={pokemonPlayerOne} cardData={playerOneHand} cardScore={scoreValue} />
-                </li>
-                <li className="playerTwoUl">
-                  <p className="playerLabel">player two</p>
-                  <Player pokeData={pokemonPlayerTwo} cardData={playerTwoHand} cardScore={scoreTwoValue} />
-                </li>
-              </ul>
-            </div>
-          </section>
-          : <InstructionsContent />
+            <section className='players'>
+              <div className='wrapper'>
+                <ul className='playerUl'>
+                  <li className="playerOneUl">
+                    <p className="playerLabel">player one</p>
+                    <Player pokeData={pokemonPlayerOne} cardData={playerOneHand} cardScore={scoreValue} />
+                  </li>
+                  <li className="playerTwoUl">
+                    <p className="playerLabel">player two</p>
+                    <Player pokeData={pokemonPlayerTwo} cardData={playerTwoHand} cardScore={scoreTwoValue} />
+                  </li>
+                </ul>
+              </div>
+            </section>
+          </>
+        : <InstructionsContent />
       }
 
     </main>
