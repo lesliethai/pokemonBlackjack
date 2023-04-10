@@ -413,7 +413,7 @@ footer {
   align-items: center;
   padding: 15px;
   background-color: rgb(204, 0, 0);
-  color: black;
+  color: white;
   text-transform: uppercase;
   border: solid 3px transparent;
   box-shadow: 0 1px 0 1px grey, inset 0 1px 0 1px rgb(204, 0, 0), 0 0 0 1px grey, inset 0 0 0 1px rgb(204, 0, 0);
@@ -427,7 +427,7 @@ footer {
   text-transform: uppercase;
   color: darkblue;
   padding: 10px;
-  background-color: grey;
+  background-color: white;
   border-radius: 16px;
   box-shadow: 0 1px 0 1px black, inset 0 1px 0 1px gray, 0 0 0 1px grey, inset 0 0 0 1px black;
 }
@@ -498,6 +498,11 @@ footer {
   padding: 8px 5px 0;
   width: 40%;
   height: 100%;
+  min-height: 125px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin: 0 auto;
   color: black;
   padding: 15px 10px 0px;
@@ -673,6 +678,7 @@ footer {
   font-size: 1.25rem;
   width: 30%;
   margin: 0 auto;
+  min-height: 89px;
   padding: 10px 25px;
 }
 .controls button {
