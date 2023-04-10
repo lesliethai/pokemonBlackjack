@@ -318,7 +318,7 @@ const GameContainer = () => {
               </div>
             </section>
           </>
-        : <InstructionsContent />
+        : <InstructionsContent gameState={gameStart} quitHandler={quitHandler} startGameHandler={startGameHandler}/>
       }
 
     </main>

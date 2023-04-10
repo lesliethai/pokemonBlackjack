@@ -1,4 +1,4 @@
-const InstructionsContent = () => {
+const InstructionsContent = ({gameState, quitHandler, startGameHandler}) => {
 
   return (
       <div className="dialogueBoxWrapper instructions">
@@ -8,6 +8,11 @@ const InstructionsContent = () => {
           <li><span className="controlSpan">Hit</span> - active player draws another card and adds it to their current hand</li>
           <li><span className="controlSpan">Stand</span> - stops the card draw and moves on to another player or ends the game</li>
         </ul>
+        {
+          gameState
+          ? null
+          : <button onClick={gameState ? quitHandler : startGameHandler} className='initialStartBtn'>start</button>
+        }
       </div>
   )
 }

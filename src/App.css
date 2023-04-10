@@ -348,15 +348,6 @@ footer {
   width: 100%;
 }
 
-.instructionsContainer {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
-.instructionsContainer button {
-  z-index: 30;
-}
-
 .instructionsParent {
   background: rgba(0, 0, 0, 0.4);
   position: fixed;
@@ -368,11 +359,6 @@ footer {
 }
 
 .instructions {
-  background-color: white;
-  border-radius: 2px;
-  line-height: 16px;
-  border: 1px solid white;
-  box-shadow: 0 1px 0 1px black, inset 0 1px 0 1px black, 0 0 0 1px black, inset 0 0 0 1px black;
   position: absolute;
   top: 25%;
   left: 0%;
@@ -423,7 +409,8 @@ footer {
   border: solid 3px rgb(59, 76, 202);
 }
 
-#startButton {
+.initialStartBtn,
+.quitBtn {
   text-transform: uppercase;
   color: darkblue;
   padding: 10px;
@@ -431,8 +418,10 @@ footer {
   border-radius: 16px;
   box-shadow: 0 1px 0 1px black, inset 0 1px 0 1px gray, 0 0 0 1px grey, inset 0 0 0 1px black;
 }
-#startButton button:hover,
-#startButton button:focus {
+.initialStartBtn button:hover,
+.initialStartBtn button:focus,
+.quitBtn button:hover,
+.quitBtn button:focus {
   border: solid 3px rgb(59, 76, 202);
 }
 
@@ -481,10 +470,9 @@ footer {
   line-height: 16px;
   border: 1px solid white;
   box-shadow: 0 1px 0 1px black, inset 0 1px 0 1px black, 0 0 0 1px black, inset 0 0 0 1px black;
-  position: absolute;
-  top: 25%;
-  left: 0%;
-  right: 0%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   z-index: 20;
 }
 
