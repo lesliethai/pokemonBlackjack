@@ -17,5 +17,9 @@
   }
 
   @include dialogueBox;
+
+  .playerHighlight {
+    color: $red;
+  }
 }
 

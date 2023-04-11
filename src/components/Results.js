@@ -8,7 +8,7 @@ const Results = ({ result, winner, playerOnePokemon, playerTwoPokemon, currentPl
         <div className="resultsWording">
           {
             (currentPlayer !== 'none') && (winner === 'none')
-              ? <p>{currentPlayer}'s turn!</p>
+              ? <p className="playerHighlight">{currentPlayer}'s turn!</p>
               : ''}
           {gameStart
             ? <p>{result}</p>
@@ -17,10 +17,10 @@ const Results = ({ result, winner, playerOnePokemon, playerTwoPokemon, currentPl
           {winner !== 'none'
             ? <p>
               {(winner === 'player one' && result !== 'Player one has fully evolved!')
-                ? <><span>{playerOnePokemon.name}</span> is evolving!</>
+                ? <><span className="playerHighlight">{playerOnePokemon.name}</span> is evolving!</>
                 : (
                   (winner === 'player two' && result !== 'Player two has fully evolved!')
-                    ? <><span>{playerTwoPokemon.name}</span> is evolving!</>
+                    ? <><span className="playerHighlight">{playerTwoPokemon.name}</span> is evolving!</>
                     : ''
                 )}
             </p>

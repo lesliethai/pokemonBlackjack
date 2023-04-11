@@ -508,6 +508,9 @@ footer {
     max-width: 550px;
   }
 }
+.resultsWording .playerHighlight {
+  color: rgb(204, 0, 0);
+}
 
 .playerContainer:first-child .displayPoke {
   text-align: center;

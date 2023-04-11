@@ -5,16 +5,11 @@ const Controller = ({ hitButton, stayButton, winner, result, quitHandler, evolve
       {
         winner !== 'none'
           ? <li>
-            <button
-              onClick={(result === ('Player one has fully evolved!')) || (result === ('Player two has fully evolved!'))
-                ? quitHandler
-                : evolve} disabled={winner === 'none'}>
-              {
-                (result === ('Player one has fully evolved!')) || (result === ('Player two has fully evolved!'))
-                  ? 'play again'
-                  : 'evolve'
-              }
-            </button>
+            {
+              (result === ('Player one has fully evolved!') || result === ('Player two has fully evolved!'))
+              ? <button onClick={quitHandler}>play again</button>
+              : <button onClick={evolve}>evolve</button>
+            }
           </li>
           : <>
             <li>

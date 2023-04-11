@@ -147,7 +147,8 @@ const GameContainer = () => {
   const startGameHandler = () => {
     setGameStart(!gameStart);
     setCurrentPlayer('Player one');
-
+    setResult('Draw a card!');
+    setWinner('none');
     const check = currentDeck.splice(0, 2);
     const check2 = currentDeck.splice(0, 2);
 
@@ -203,9 +204,7 @@ const GameContainer = () => {
       if (scoreValue > 21) {
         setResult(`Player two wins! Player one busted!`);
         setWinner('player two');
-      }
-
-      if (scoreTwoValue > 21) {
+      } else if (scoreTwoValue > 21) {
         setResult(`Player one wins! Player two busted!`);
         setWinner('player one');
       }
@@ -280,10 +279,10 @@ const GameContainer = () => {
 
   // quit the current hand - resets player and game play states
   const quitHandler = () => {
+    clearGame();
     setGameStart(false);
     setDisplayInstructions(false);
     setCurrentPlayer('none');
-    clearGame();
   }
   //
 
@@ -308,11 +307,15 @@ const GameContainer = () => {
                 <ul className='playerUl'>
                   <li className="playerOneUl">
                     <p className="playerLabel">player one</p>
-                    <Player pokeData={pokemonPlayerOne} cardData={playerOneHand} cardScore={scoreValue} />
+                    <div className="playerContainer">
+                      <Player pokeData={pokemonPlayerOne} cardData={playerOneHand} cardScore={scoreValue} />
+                    </div>
                   </li>
                   <li className="playerTwoUl">
                     <p className="playerLabel">player two</p>
-                    <Player pokeData={pokemonPlayerTwo} cardData={playerTwoHand} cardScore={scoreTwoValue} />
+                    <div className="playerContainer">
+                      <Player pokeData={pokemonPlayerTwo} cardData={playerTwoHand} cardScore={scoreTwoValue} />
+                    </div>
                   </li>
                 </ul>
               </div>
