@@ -77,4 +77,16 @@ footer {
   position: absolute;
   bottom: 0%;
   width: 100%;
+  
+  a {
+    color: white;
+    text-decoration: none;
+    transition: 500ms;
+
+    &:hover,
+    &:focus {
+      color: $red;
+      text-decoration: underline;
+    }
+  }
 }

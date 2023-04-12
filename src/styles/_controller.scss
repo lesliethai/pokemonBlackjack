@@ -37,6 +37,10 @@
 
 .controller {
   padding: 40px 0px;
+
+  .actionBtn {
+    border-bottom: 2px dotted black;
+  }
 }
 
 @include devices(mobile) {

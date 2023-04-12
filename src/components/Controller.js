@@ -13,10 +13,10 @@ const Controller = ({ hitButton, stayButton, winner, result, quitHandler, evolve
           </li>
           : <>
             <li>
-              <button onClick={hitButton} disabled={winner !== 'none'}>Hit</button>
+              <button className='actionBtn' onClick={hitButton} disabled={winner !== 'none'}>Hit</button>
             </li>
             <li>
-              <button onClick={stayButton} disabled={winner !== 'none'}>Stay</button>
+              <button className='actionBtn' onClick={stayButton} disabled={winner !== 'none'}>Stay</button>
             </li>
           </>
       }

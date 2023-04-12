@@ -347,6 +347,15 @@ footer {
   bottom: 0%;
   width: 100%;
 }
+footer a {
+  color: white;
+  text-decoration: none;
+  transition: 500ms;
+}
+footer a:hover, footer a:focus {
+  color: rgb(204, 0, 0);
+  text-decoration: underline;
+}
 
 .instructionsParent {
   background: rgba(0, 0, 0, 0.4);
@@ -493,6 +502,7 @@ footer {
   align-items: center;
   margin: 0 auto;
   color: black;
+  text-align: center;
   padding: 15px 10px 0px;
   line-height: 25px;
   font-family: "Pokemon GB", Arial, sans-serif;
@@ -512,41 +522,24 @@ footer {
   color: rgb(204, 0, 0);
 }
 
-.playerContainer:first-child .displayPoke {
+.playerContainer .displayPoke {
   text-align: center;
 }
-.playerContainer:first-child .displayPoke img {
+.playerContainer .displayPoke img {
   animation-duration: 3s;
-  animation-name: slideFromLeft;
+  animation-name: appearAnimation;
 }
 
-@keyframes slideFromLeft {
+.currentPlayerHighlight {
+  box-shadow: 1px 1px 10px 3px rgb(204, 0, 0);
+}
+
+@keyframes appearAnimation {
   from {
-    margin-left: -150%;
+    opacity: 0;
   }
   to {
-    margin-left: 0%;
-  }
-}
-.playerLabel {
-  background: rgb(255, 222, 0);
-  border: 1px solid black;
-}
-
-.playerContainer:nth-child(2) .displayPoke {
-  text-align: center;
-}
-.playerContainer:nth-child(2) .displayPoke img {
-  animation-duration: 3s;
-  animation-name: slideFromRight;
-}
-
-@keyframes slideFromRight {
-  from {
-    margin-left: 150%;
-  }
-  to {
-    margin-left: 0%;
+    opacity: 1;
   }
 }
 .displayPoke {
@@ -595,13 +588,15 @@ footer {
 .playerUl .playerTwoUl {
   width: 45%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   position: relative;
 }
 .playerUl .playerLabel {
-  position: absolute;
-  top: -10%;
+  background: white;
+  border-radius: 5px;
   padding: 5px 10px;
+  margin-bottom: 15px;
 }
 
 .playerCards ul {
@@ -616,11 +611,6 @@ footer {
 }
 
 @media (min-width: 320px) {
-  .playerUl .playerLabel {
-    top: -10%;
-    font-size: 18px;
-    font-size: 0.9rem;
-  }
   .players .wrapper {
     width: 100%;
   }
@@ -700,6 +690,9 @@ footer {
 
 .controller {
   padding: 40px 0px;
+}
+.controller .actionBtn {
+  border-bottom: 2px dotted black;
 }
 
 @media (min-width: 320px) {

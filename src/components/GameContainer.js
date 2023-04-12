@@ -147,8 +147,7 @@ const GameContainer = () => {
   const startGameHandler = () => {
     setGameStart(!gameStart);
     setCurrentPlayer('Player one');
-    setResult('Draw a card!');
-    setWinner('none');
+
     const check = currentDeck.splice(0, 2);
     const check2 = currentDeck.splice(0, 2);
 
@@ -306,13 +305,19 @@ const GameContainer = () => {
               <div className='wrapper'>
                 <ul className='playerUl'>
                   <li className="playerOneUl">
-                    <p className="playerLabel">player one</p>
+                    <p className={
+                      currentPlayer === 'Player one'
+                      ? 'playerLabel currentPlayerHighlight'
+                      : 'playerLabel'}>player one</p>
                     <div className="playerContainer">
                       <Player pokeData={pokemonPlayerOne} cardData={playerOneHand} cardScore={scoreValue} />
                     </div>
                   </li>
                   <li className="playerTwoUl">
-                    <p className="playerLabel">player two</p>
+                    <p className={
+                      currentPlayer === 'Player two'
+                      ? 'playerLabel currentPlayerHighlight'
+                      : 'playerLabel'}>player two</p>
                     <div className="playerContainer">
                       <Player pokeData={pokemonPlayerTwo} cardData={playerTwoHand} cardScore={scoreTwoValue} />
                     </div>
