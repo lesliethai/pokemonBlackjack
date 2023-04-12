@@ -229,7 +229,7 @@ h2,
 h3,
 button {
   font-family: "VT323", monospace;
-  color: rgb(204, 0, 0);
+  color: black;
 }
 
 h1 {
@@ -642,6 +642,11 @@ footer a:hover, footer a:focus {
   .players .playerCards .card img {
     height: 100px;
     width: auto;
+  }
+  .players .playerLabel {
+    font-size: 18px;
+    font-size: 0.9rem;
+    padding: 2px;
   }
 }
 @media (min-width: 769px) {

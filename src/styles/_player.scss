@@ -136,6 +136,11 @@
                 }
             }
         }
+
+        .playerLabel {
+            @include fontSize(18);
+            padding: 2px;
+        }
     }
 }
 

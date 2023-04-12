@@ -8,7 +8,7 @@ const Player = ({ pokeData, cardData, cardScore }) => {
         <img src={pokeData.url} alt={`image of ${pokeData.name}`} />
         <div className="pokeInfo">
           <h3 className="pokeName" >{pokeData.name}</h3>
-          <h4 className="pokeScore">{cardScore}</h4>
+          <h4 className="pokeScore">score: {cardScore}</h4>
         </div>
 
       </div> {/* /.displayPoke */}
