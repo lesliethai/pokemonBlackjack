@@ -3,7 +3,7 @@ h2,
 h3,
 button {
   font-family: $primaryFont;
-  color: $red;
+  color: black;
 }
 
 h1{
@@ -35,6 +35,11 @@ p {
       font-family: $tertiaryFont;
     }
   }
+}
+
+.actionOr {
+  @include fontSize(20);
+  font-family: $tertiaryFont;
 }
 
 span {

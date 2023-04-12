@@ -6,28 +6,26 @@ const Results = ({ result, winner, playerOnePokemon, playerTwoPokemon, currentPl
     <section className="results">
       <div className="dialogueBoxWrapper">
         <div className="resultsWording">
-          <p>
-            {
-              (currentPlayer !== 'none') && (winner === 'none')
-                ? `${currentPlayer}'s turn!`
-                : ''}
-          </p>
-          <p>{gameStart
-            ? result
-            : ''}</p>
-          <p>{winner !== 'none'
-            ? (
-              (winner === 'player one' && result !== 'Player one has fully evolved!')
-                ? <p><span>{playerOnePokemon.name}</span> is evolving!</p>
+          {
+            (currentPlayer !== 'none') && (winner === 'none')
+              ? <p className="playerHighlight">{currentPlayer}'s turn!</p>
+              : ''}
+          {gameStart
+            ? <p>{result}</p>
+            : ''}
+
+          {winner !== 'none'
+            ? <p>
+              {(winner === 'player one' && result !== 'Player one has fully evolved!')
+                ? <><span className="playerHighlight">{playerOnePokemon.name}</span> is evolving!</>
                 : (
                   (winner === 'player two' && result !== 'Player two has fully evolved!')
-                    ? <p><span>{playerTwoPokemon.name}</span> is evolving!</p>
+                    ? <><span className="playerHighlight">{playerTwoPokemon.name}</span> is evolving!</>
                     : ''
-                )
-            )
+                )}
+            </p>
             : null
           }
-          </p>
         </div>
       </div>
     </section>

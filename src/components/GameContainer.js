@@ -10,18 +10,24 @@ import { useState, useEffect } from 'react';
 const GameContainer = () => {
   // state to track game start
   const [gameStart, setGameStart] = useState(false);
-
+  
   // initialize state for displaying of instructions set to false  
   const [displayInstructions, setDisplayInstructions] = useState(false);
-  //
+  
+  // state for saving poke data to pass to player component as props
+  const [pokemonPlayerOneFam, setPokemonPlayerOneFam] = useState([]);
+  const [pokemonPlayerTwoFam, setPokemonPlayerTwoFam] = useState([]);
+  const [pokemonPlayerOne, setPokemonPlayerOne] = useState([]);
+  const [pokemonPlayerTwo, setPokemonPlayerTwo] = useState([]);
+  
+  // state to track card draw and player hand
+  const [deck, setDeck] = useState([]);
+  const [playerOneHand, setPlayerOneHand] = useState([]);
+  const [playerTwoHand, setPlayerTwoHand] = useState([]);
+  const [currentPlayer, setCurrentPlayer] = useState('none');
+  const [result, setResult] = useState('What would you like to do?');
+  const [winner, setWinner] = useState('none');
 
-  // API calls wrapped in useEffect to request data and save the response into state that will be passed down to corresponding components as props
-  // function for determining the total of PlayerCards array and comparing them
-  // when there is a winner render Results.js component of corresponding player
-  // updates piece of state {winningPokemonId} adds 1 and calls the pokemon API with that id in the params 
-  //
-
-  // FILTERING FOR POKEMON THAT MEET THE CRITERIA OF 1ST OF 3 EVOLVED STATES
   // array of available pokemon selection
   const pokemonPool = [
     [1, 2, 3],
@@ -53,14 +59,6 @@ const GameContainer = () => {
   while (pokeFam2.some(pokemon => pokeFam.includes(pokemon))) {
     pokeFam2 = randomizer(pokemonPool);
   }
-
-  // INITIAL POKEMON API CALL
-  // state for saving poke data to pass to player component as props
-  const [pokemonPlayerOneFam, setPokemonPlayerOneFam] = useState([]);
-  const [pokemonPlayerTwoFam, setPokemonPlayerTwoFam] = useState([]);
-  const [pokemonPlayerOne, setPokemonPlayerOne] = useState([]);
-  const [pokemonPlayerTwo, setPokemonPlayerTwo] = useState([]);
-
 
   useEffect(() => {
 
@@ -114,16 +112,6 @@ const GameContainer = () => {
 
   }, [gameStart]);
 
-
-  // API CALL TO GET THE DECK OF CARDS FOR THE HAND
-  // state to track card draw and player hand
-  const [deck, setDeck] = useState([]);
-  const [playerOneHand, setPlayerOneHand] = useState([]);
-  const [playerTwoHand, setPlayerTwoHand] = useState([]);
-  const [currentPlayer, setCurrentPlayer] = useState('none');
-  const [result, setResult] = useState('Draw a card!');
-  const [winner, setWinner] = useState('none');
-
   // deck of cards api call
   useEffect(() => {
 
@@ -151,7 +139,7 @@ const GameContainer = () => {
   const clearGame = () => {
     setPlayerOneHand([]);
     setPlayerTwoHand([]);
-    setResult('Draw a card!');
+    setResult('What would you like to do?');
     setWinner('none');
   }
 
@@ -215,9 +203,7 @@ const GameContainer = () => {
       if (scoreValue > 21) {
         setResult(`Player two wins! Player one busted!`);
         setWinner('player two');
-      }
-
-      if (scoreTwoValue > 21) {
+      } else if (scoreTwoValue > 21) {
         setResult(`Player one wins! Player two busted!`);
         setWinner('player one');
       }
@@ -292,50 +278,54 @@ const GameContainer = () => {
 
   // quit the current hand - resets player and game play states
   const quitHandler = () => {
+    clearGame();
     setGameStart(false);
     setDisplayInstructions(false);
     setCurrentPlayer('none');
-    clearGame();
   }
   //
 
   return (
     <main>
       <Instructions gameState={gameStart} quitHandler={quitHandler} startGameHandler={startGameHandler} setDisplayInstructions={setDisplayInstructions} displayInstructions={displayInstructions} />
+
       {gameStart
-        ? <Results result={result} winner={winner} playerOnePokemon={pokemonPlayerOne} playerTwoPokemon={pokemonPlayerTwo} currentPlayer={currentPlayer} gameStart={gameStart} quitHandler={quitHandler} evolve={evolve} />
-        : null
-      }
+        ? 
+          <>
+            {/* when game state is true, render Controller component*/}
+            <section className='controller'>
+              <div className='wrapper'>
+                <Results result={result} winner={winner} playerOnePokemon={pokemonPlayerOne} playerTwoPokemon={pokemonPlayerTwo} currentPlayer={currentPlayer} gameStart={gameStart} quitHandler={quitHandler} evolve={evolve} />
+                <Controller hitButton={hitHandler} stayButton={stayHandler} winner={winner} result={result} quitHandler={quitHandler} evolve={evolve} />
+              </div>
+            </section>
 
-      {/* display instructions on default. on game start, remove instructions display and display players*/}
-      {/* when game state is true, render Controller component*/}
-      {
-        gameStart
-          ? <section className='controller'>
-            <div className='wrapper'>
-              <Controller hitButton={hitHandler} stayButton={stayHandler} winner={winner} result={result} quitHandler={quitHandler} evolve={evolve} />
-            </div>
-          </section>
-          : null
-      }
-
-      {
-        gameStart
-          ? <section className='players'>
-            <div className='wrapper'>
-              <ul className='playerUl'>
-                <li className="playerOneUl">
-                  <p className="playerLabel">player one</p>
-                  <Player pokeData={pokemonPlayerOne} cardData={playerOneHand} cardScore={scoreValue} />
-                </li>
-                <li className="playerTwoUl">
-                  <p className="playerLabel">player two</p>
-                  <Player pokeData={pokemonPlayerTwo} cardData={playerTwoHand} cardScore={scoreTwoValue} />
-                </li>
-              </ul>
-            </div>
-          </section>
-          : <InstructionsContent />
+            <section className='players'>
+              <div className='wrapper'>
+                <ul className='playerUl'>
+                  <li className="playerOneUl">
+                    <p className={
+                      currentPlayer === 'Player one'
+                      ? 'playerLabel currentPlayerHighlight'
+                      : 'playerLabel'}>player one</p>
+                    <div className="playerContainer">
+                      <Player pokeData={pokemonPlayerOne} cardData={playerOneHand} cardScore={scoreValue} />
+                    </div>
+                  </li>
+                  <li className="playerTwoUl">
+                    <p className={
+                      currentPlayer === 'Player two'
+                      ? 'playerLabel currentPlayerHighlight'
+                      : 'playerLabel'}>player two</p>
+                    <div className="playerContainer">
+                      <Player pokeData={pokemonPlayerTwo} cardData={playerTwoHand} cardScore={scoreTwoValue} />
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </section>
+          </>
+        : <InstructionsContent gameState={gameStart} quitHandler={quitHandler} startGameHandler={startGameHandler}/>
       }
 
     </main>

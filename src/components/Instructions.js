@@ -13,25 +13,25 @@ const Instructions = ({ gameState, quitHandler, startGameHandler, setDisplayInst
       {/* instructions: displays when state is set to true */}
       {
         displayInstructions
-          ? <InstructionsContent displayInstructions={displayInstructions} setDisplayInstructions={setDisplayInstructions} />
+          ? <div onClick={handleClick}className="instructionsParent"><InstructionsContent gameState={gameState} quitHandler={quitHandler} startGameHandler={startGameHandler}/></div>
           : null
       }
 
       {/* disable button access if game has not started yet */}
-      <button className="instructionsButton" onClick={() => { handleClick() }} disabled={!gameState}>{displayInstructions ? "x" : "?"}</button>
+      {
+        gameState
+        ? <>
+            <button className="instructionsButton" onClick={() => { handleClick() }}>{
+              displayInstructions
+              ? 'x'
+              : '?'
+            }</button>
+            <button onClick={gameState ? quitHandler : startGameHandler} className='quitBtn'>quit</button>
+          </>
+        : null
+      }
+      
 
-      {/* if game state is false, display 'start game'. else, display 'quit' */}
-      <button
-        onClick={gameState ? quitHandler : startGameHandler}
-        className={gameState ? 'howToPlayBtn' : null}
-        id='startButton'
-      >
-        {
-          gameState
-            ? 'quit'
-            : 'start'
-        }
-      </button>
     </section>
   )
 }

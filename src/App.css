@@ -229,7 +229,7 @@ h2,
 h3,
 button {
   font-family: "VT323", monospace;
-  color: rgb(204, 0, 0);
+  color: black;
 }
 
 h1 {
@@ -264,12 +264,18 @@ p {
   font-family: "Pokemon GB", Arial, sans-serif;
 }
 
+.actionOr {
+  font-size: 20px;
+  font-size: 1rem;
+  font-family: "Pokemon GB", Arial, sans-serif;
+}
+
 span {
   text-transform: uppercase;
 }
 
 body {
-  background: url(../assets/pokemon_bg.png);
+  background: url("https://wallpapers.com/images/hd/pokemon-emerald-green-setting-hgox2c1ebjwek0xg.jpg") center;
   background-color: rgb(125, 173, 113);
   background-size: cover;
   background-repeat: no-repeat;
@@ -347,14 +353,14 @@ footer {
   bottom: 0%;
   width: 100%;
 }
-
-.instructionsContainer {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
+footer a {
+  color: white;
+  text-decoration: none;
+  transition: 500ms;
 }
-.instructionsContainer button {
-  z-index: 30;
+footer a:hover, footer a:focus {
+  color: rgb(204, 0, 0);
+  text-decoration: underline;
 }
 
 .instructionsParent {
@@ -368,11 +374,6 @@ footer {
 }
 
 .instructions {
-  background-color: white;
-  border-radius: 2px;
-  line-height: 16px;
-  border: 1px solid white;
-  box-shadow: 0 1px 0 1px black, inset 0 1px 0 1px black, 0 0 0 1px black, inset 0 0 0 1px black;
   position: absolute;
   top: 25%;
   left: 0%;
@@ -413,7 +414,7 @@ footer {
   align-items: center;
   padding: 15px;
   background-color: rgb(204, 0, 0);
-  color: black;
+  color: white;
   text-transform: uppercase;
   border: solid 3px transparent;
   box-shadow: 0 1px 0 1px grey, inset 0 1px 0 1px rgb(204, 0, 0), 0 0 0 1px grey, inset 0 0 0 1px rgb(204, 0, 0);
@@ -423,16 +424,19 @@ footer {
   border: solid 3px rgb(59, 76, 202);
 }
 
-#startButton {
+.initialStartBtn,
+.quitBtn {
   text-transform: uppercase;
   color: darkblue;
   padding: 10px;
-  background-color: grey;
+  background-color: white;
   border-radius: 16px;
   box-shadow: 0 1px 0 1px black, inset 0 1px 0 1px gray, 0 0 0 1px grey, inset 0 0 0 1px black;
 }
-#startButton button:hover,
-#startButton button:focus {
+.initialStartBtn button:hover,
+.initialStartBtn button:focus,
+.quitBtn button:hover,
+.quitBtn button:focus {
   border: solid 3px rgb(59, 76, 202);
 }
 
@@ -481,25 +485,25 @@ footer {
   line-height: 16px;
   border: 1px solid white;
   box-shadow: 0 1px 0 1px black, inset 0 1px 0 1px black, 0 0 0 1px black, inset 0 0 0 1px black;
-  position: absolute;
-  top: 25%;
-  left: 0%;
-  right: 0%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   z-index: 20;
 }
 
 .resultsWording {
-  background-color: white;
-  border-radius: 2px;
-  line-height: 16px;
-  border: 1px solid white;
-  box-shadow: 0 1px 0 1px black, inset 0 1px 0 1px black, 0 0 0 1px black, inset 0 0 0 1px black;
   font-family: "Pokemon GB", Arial, sans-serif;
   padding: 8px 5px 0;
   width: 40%;
   height: 100%;
+  min-height: 125px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin: 0 auto;
   color: black;
+  text-align: center;
   padding: 15px 10px 0px;
   line-height: 25px;
   font-family: "Pokemon GB", Arial, sans-serif;
@@ -515,75 +519,42 @@ footer {
     max-width: 550px;
   }
 }
+.resultsWording .playerHighlight {
+  color: rgb(204, 0, 0);
+}
 
-.playerContainer:first-child .displayPoke {
+.playerContainer {
+  background-color: white;
+  border-radius: 2px;
+  line-height: 16px;
+  border: 1px solid white;
+  box-shadow: 0 1px 0 1px black, inset 0 1px 0 1px black, 0 0 0 1px black, inset 0 0 0 1px black;
+  max-width: 150px;
+}
+.playerContainer .displayPoke {
   text-align: center;
 }
-.playerContainer:first-child .displayPoke img {
-  -webkit-animation-duration: 3s;
-          animation-duration: 3s;
-  -webkit-animation-name: slideFromLeft;
-          animation-name: slideFromLeft;
+.playerContainer .displayPoke img {
+  animation-duration: 3s;
+  animation-name: appearAnimation;
 }
 
-@-webkit-keyframes slideFromLeft {
+.currentPlayerHighlight {
+  box-shadow: 1px 1px 10px 3px rgb(204, 0, 0);
+}
+
+@keyframes appearAnimation {
   from {
-    margin-left: -150%;
+    opacity: 0;
   }
   to {
-    margin-left: 0%;
-  }
-}
-
-@keyframes slideFromLeft {
-  from {
-    margin-left: -150%;
-  }
-  to {
-    margin-left: 0%;
-  }
-}
-.playerLabel {
-  background: rgb(255, 222, 0);
-  border: 1px solid black;
-}
-
-.playerContainer:nth-child(2) .displayPoke {
-  text-align: center;
-}
-.playerContainer:nth-child(2) .displayPoke img {
-  -webkit-animation-duration: 3s;
-          animation-duration: 3s;
-  -webkit-animation-name: slideFromRight;
-          animation-name: slideFromRight;
-}
-
-@-webkit-keyframes slideFromRight {
-  from {
-    margin-left: 150%;
-  }
-  to {
-    margin-left: 0%;
-  }
-}
-
-@keyframes slideFromRight {
-  from {
-    margin-left: 150%;
-  }
-  to {
-    margin-left: 0%;
+    opacity: 1;
   }
 }
 .displayPoke {
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-around;
-  background-color: white;
-  border-radius: 2px;
-  line-height: 16px;
-  border: 1px solid white;
-  box-shadow: 0 1px 0 1px black, inset 0 1px 0 1px black, 0 0 0 1px black, inset 0 0 0 1px black;
   margin: 0 auto;
   margin-bottom: 25px;
 }
@@ -621,13 +592,15 @@ footer {
 .playerUl .playerTwoUl {
   width: 45%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   position: relative;
 }
 .playerUl .playerLabel {
-  position: absolute;
-  top: -10%;
+  background: white;
+  border-radius: 5px;
   padding: 5px 10px;
+  margin-bottom: 15px;
 }
 
 .playerCards ul {
@@ -639,14 +612,10 @@ footer {
 .playerCards img {
   width: auto;
   margin-right: 2px;
+  margin-top: 2px;
 }
 
 @media (min-width: 320px) {
-  .playerUl .playerLabel {
-    top: -10%;
-    font-size: 18px;
-    font-size: 0.9rem;
-  }
   .players .wrapper {
     width: 100%;
   }
@@ -658,18 +627,18 @@ footer {
     max-width: 145px;
   }
   .players .displayPoke h3,
-.players .displayPoke h4 {
+  .players .displayPoke h4 {
     font-size: 15px;
     font-size: 0.75rem;
   }
   .players .playerContainer {
-    padding-bottom: 40px;
+    padding: 10px 5px;
   }
   .players .playerUl {
     flex-direction: row;
   }
   .players .playerOneUl,
-.players .playerTwoUl {
+  .players .playerTwoUl {
     width: 100%;
   }
   .players .playerCards .card {
@@ -679,22 +648,36 @@ footer {
     height: 100px;
     width: auto;
   }
+  .players .playerLabel {
+    font-size: 18px;
+    font-size: 0.9rem;
+    padding: 2px;
+  }
+}
+@media (min-width: 481px) {
+  .playerContainer {
+    max-width: 225px;
+  }
 }
 @media (min-width: 769px) {
+  .playerContainer {
+    max-width: 350px;
+  }
   .players .playerCards .card img {
     height: 200px;
   }
 }
+@media (min-width: 769px) and (min-width: 1100px) {
+  .playerContainer {
+    max-width: 450px;
+  }
+}
 .controls {
-  background-color: white;
-  border-radius: 2px;
-  line-height: 16px;
-  border: 1px solid white;
-  box-shadow: 0 1px 0 1px black, inset 0 1px 0 1px black, 0 0 0 1px black, inset 0 0 0 1px black;
   font-size: 25px;
   font-size: 1.25rem;
   width: 30%;
   margin: 0 auto;
+  min-height: 89px;
   padding: 10px 25px;
 }
 .controls button {
@@ -726,6 +709,16 @@ footer {
 .controller {
   padding: 40px 0px;
 }
+.controller .wrapper {
+  background-color: white;
+  border-radius: 2px;
+  line-height: 16px;
+  border: 1px solid white;
+  box-shadow: 0 1px 0 1px black, inset 0 1px 0 1px black, 0 0 0 1px black, inset 0 0 0 1px black;
+}
+.controller .actionBtn {
+  border-bottom: 2px dotted black;
+}
 
 @media (min-width: 320px) {
   .controls {
@@ -738,8 +731,16 @@ footer {
     align-items: center;
   }
 }
-@media (min-width: 1025px) {
+@media (min-width: 769px) {
+  .controller .wrapper {
+    width: 50%;
+  }
+}
+@media (min-width: 1100px) {
   .controller ul {
     flex-direction: row;
+  }
+  .controller .wrapper {
+    width: 30%;
   }
 }/*# sourceMappingURL=App.css.map */

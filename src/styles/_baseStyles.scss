@@ -1,5 +1,5 @@
 body{
-  background: url(../assets/pokemon_bg.png);
+  background: url('https://wallpapers.com/images/hd/pokemon-emerald-green-setting-hgox2c1ebjwek0xg.jpg') center;
   background-color: rgb(125, 173, 113);
   background-size: cover;
   background-repeat: no-repeat;
@@ -73,13 +73,20 @@ img {
   margin: 0 auto;
 }
 
-
 footer {
   position: absolute;
   bottom: 0%;
   width: 100%;
-}
+  
+  a {
+    color: white;
+    text-decoration: none;
+    transition: 500ms;
 
-// .disabled {
-//   display:none;
-// }
+    &:hover,
+    &:focus {
+      color: $red;
+      text-decoration: underline;
+    }
+  }
+}

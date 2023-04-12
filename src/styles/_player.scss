@@ -1,56 +1,28 @@
-//Player 1 Pokemon
-.playerContainer:first-child .displayPoke {
-    img {
-        animation-duration: 3s;
-        animation-name: slideFromLeft;
-    }
+.playerContainer {
+    @include pokemonBorder; 
+    max-width: 150px;
 
-    text-align: center;
-
-
-}
-
-//Slide in from outside VP
-@keyframes slideFromLeft {
-    from {
-        margin-left: -150%;
-
-    }
-
-    to {
-        margin-left: 0%;
-
-    }
-}
-
-.playerLabel {
-    background: $yellow;
-    border: 1px solid black;
-}
-
-//Player 2 Pokemon
-.playerContainer:nth-child(2) {
     .displayPoke {
-        img {
-            animation-duration: 3s;
-            animation-name: slideFromRight;
-        }
-
         text-align: center;
 
+        img {
+            animation-duration: 3s;
+            animation-name: appearAnimation;
+        }
     }
 }
 
+.currentPlayerHighlight {
+    box-shadow: 1px 1px 10px 3px $red;
+}
+
 //Slide in from outside VP
-@keyframes slideFromRight {
+@keyframes appearAnimation {
     from {
-        margin-left: 150%;
-
+        opacity: 0;
     }
-
     to {
-        margin-left: 0%;
-
+        opacity: 1;
     }
 }
 
@@ -58,8 +30,6 @@
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-around;
-
-    @include pokemonBorder;
     margin: 0 auto;
     margin-bottom: 25px;
 }
@@ -96,15 +66,16 @@
     .playerTwoUl {
         width: 45%;
         display: flex;
-        justify-content: center;
+        flex-direction: column;
+        align-items: center;
         position: relative;
-        
     }
 
     .playerLabel {
-        position: absolute;
-        top: -10%;
+        background: white;
+        border-radius: 5px;
         padding: 5px 10px;
+        margin-bottom: 15px;
     }
 
 }
@@ -116,19 +87,15 @@
         justify-content: center;
         flex-wrap: wrap;
     }
-
+    
     img {
         width: auto;
         margin-right: 2px;
+        margin-top: 2px;
     }
 }
 
 @include devices (mobile) {
-
-    .playerUl .playerLabel {
-        top: -10%;
-        @include fontSize(18);
-    }
 
     .players {
         .wrapper {
@@ -149,7 +116,7 @@
         }
 
         .playerContainer {
-            padding-bottom: 40px;
+            padding: 10px 5px;
         }
 
         .playerUl {
@@ -171,21 +138,40 @@
                 }
             }
         }
+
+        .playerLabel {
+            @include fontSize(18);
+            padding: 2px;
+        }
     }
 }
 
+@include devices (tablet) {
+    .playerContainer {
+        max-width: 225px;
+    }
+}
 @include devices (laptop) {
+
+    .playerContainer {
+        max-width: 350px;
+    }
 
     .players {
         .playerCards {
             .card {
                 img {
                     height: 200px;
-        
                 }
             }
     }
     
+}
+
+@include devices (desktop) {
+    .playerContainer {
+        max-width: 450px;
+    }
 }
 }
 

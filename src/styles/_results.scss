@@ -1,16 +1,25 @@
 .resultsWording {
-  @include pokemonBorder;
   font-family: $tertiaryFont;
   padding: 8px 5px 0;
   width: 40%;
   height: 100%;
+  min-height: 125px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin: 0 auto;
   color: black;
+  text-align: center;
 
   @include devices (mobile){
     width:100%;
   }
 
   @include dialogueBox;
+
+  .playerHighlight {
+    color: $red;
+  }
 }
 

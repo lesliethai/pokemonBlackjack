@@ -3,12 +3,12 @@ const Player = ({ pokeData, cardData, cardScore }) => {
   const flattenedCardData = cardData.flatMap(card => card)
 
   return (
-    <li className="playerContainer">
+    <>
       <div className="displayPoke">
         <img src={pokeData.url} alt={`image of ${pokeData.name}`} />
         <div className="pokeInfo">
           <h3 className="pokeName" >{pokeData.name}</h3>
-          <h4 className="pokeScore">{cardScore}</h4>
+          <h4 className="pokeScore">score: {cardScore}</h4>
         </div>
 
       </div> {/* /.displayPoke */}
@@ -28,7 +28,7 @@ const Player = ({ pokeData, cardData, cardScore }) => {
           </ul>
         </div> {/* /.playerCards */}
       </div> {/* /.displayHand */}
-    </li>
+    </>
   )
 }
 
