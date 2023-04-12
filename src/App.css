@@ -275,7 +275,7 @@ span {
 }
 
 body {
-  background: url("https://wallpapers.com/images/hd/pokemon-emerald-green-setting-hgox2c1ebjwek0xg.jpg") center;
+  background: url(../assets/pokemon_bg.png) center;
   background-color: rgb(125, 173, 113);
   background-size: cover;
   background-repeat: no-repeat;
