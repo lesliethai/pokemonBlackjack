@@ -25,7 +25,7 @@ const GameContainer = () => {
   const [playerOneHand, setPlayerOneHand] = useState([]);
   const [playerTwoHand, setPlayerTwoHand] = useState([]);
   const [currentPlayer, setCurrentPlayer] = useState('none');
-  const [result, setResult] = useState('Draw a card!');
+  const [result, setResult] = useState('What would you like to do?');
   const [winner, setWinner] = useState('none');
 
   // array of available pokemon selection
@@ -139,7 +139,7 @@ const GameContainer = () => {
   const clearGame = () => {
     setPlayerOneHand([]);
     setPlayerTwoHand([]);
-    setResult('Draw a card!');
+    setResult('What would you like to do?');
     setWinner('none');
   }
 
@@ -292,11 +292,10 @@ const GameContainer = () => {
       {gameStart
         ? 
           <>
-            <Results result={result} winner={winner} playerOnePokemon={pokemonPlayerOne} playerTwoPokemon={pokemonPlayerTwo} currentPlayer={currentPlayer} gameStart={gameStart} quitHandler={quitHandler} evolve={evolve} />
-          
             {/* when game state is true, render Controller component*/}
             <section className='controller'>
               <div className='wrapper'>
+                <Results result={result} winner={winner} playerOnePokemon={pokemonPlayerOne} playerTwoPokemon={pokemonPlayerTwo} currentPlayer={currentPlayer} gameStart={gameStart} quitHandler={quitHandler} evolve={evolve} />
                 <Controller hitButton={hitHandler} stayButton={stayHandler} winner={winner} result={result} quitHandler={quitHandler} evolve={evolve} />
               </div>
             </section>

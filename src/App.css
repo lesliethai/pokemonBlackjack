@@ -264,6 +264,12 @@ p {
   font-family: "Pokemon GB", Arial, sans-serif;
 }
 
+.actionOr {
+  font-size: 20px;
+  font-size: 1rem;
+  font-family: "Pokemon GB", Arial, sans-serif;
+}
+
 span {
   text-transform: uppercase;
 }
@@ -486,11 +492,6 @@ footer a:hover, footer a:focus {
 }
 
 .resultsWording {
-  background-color: white;
-  border-radius: 2px;
-  line-height: 16px;
-  border: 1px solid white;
-  box-shadow: 0 1px 0 1px black, inset 0 1px 0 1px black, 0 0 0 1px black, inset 0 0 0 1px black;
   font-family: "Pokemon GB", Arial, sans-serif;
   padding: 8px 5px 0;
   width: 40%;
@@ -655,11 +656,6 @@ footer a:hover, footer a:focus {
   }
 }
 .controls {
-  background-color: white;
-  border-radius: 2px;
-  line-height: 16px;
-  border: 1px solid white;
-  box-shadow: 0 1px 0 1px black, inset 0 1px 0 1px black, 0 0 0 1px black, inset 0 0 0 1px black;
   font-size: 25px;
   font-size: 1.25rem;
   width: 30%;
@@ -696,6 +692,13 @@ footer a:hover, footer a:focus {
 .controller {
   padding: 40px 0px;
 }
+.controller .wrapper {
+  background-color: white;
+  border-radius: 2px;
+  line-height: 16px;
+  border: 1px solid white;
+  box-shadow: 0 1px 0 1px black, inset 0 1px 0 1px black, 0 0 0 1px black, inset 0 0 0 1px black;
+}
 .controller .actionBtn {
   border-bottom: 2px dotted black;
 }
@@ -711,8 +714,16 @@ footer a:hover, footer a:focus {
     align-items: center;
   }
 }
-@media (min-width: 1025px) {
+@media (min-width: 769px) {
+  .controller .wrapper {
+    width: 50%;
+  }
+}
+@media (min-width: 1100px) {
   .controller ul {
     flex-direction: row;
+  }
+  .controller .wrapper {
+    width: 30%;
   }
 }/*# sourceMappingURL=App.css.map */

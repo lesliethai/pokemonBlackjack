@@ -1,5 +1,4 @@
 .controls {
-  @include pokemonBorder;
   @include fontSize(25);
   width: 30%;
   margin: 0 auto;
@@ -38,6 +37,10 @@
 .controller {
   padding: 40px 0px;
 
+  .wrapper {
+    @include pokemonBorder;
+  }
+
   .actionBtn {
     border-bottom: 2px dotted black;
   }
@@ -56,8 +59,18 @@
     }
   }
 
-  @include devices (desktop) {
-    .controller ul {
-      flex-direction: row;
-    }
+@include devices (laptop) {
+  .controller .wrapper {
+    width: 50%;
   }
+}
+
+@include devices (desktop) {
+  .controller ul {
+    flex-direction: row;
+  }
+
+  .controller .wrapper {
+    width: 30%;
+  }
+}

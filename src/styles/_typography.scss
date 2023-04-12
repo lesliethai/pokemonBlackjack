@@ -37,6 +37,11 @@ p {
   }
 }
 
+.actionOr {
+  @include fontSize(20);
+  font-family: $tertiaryFont;
+}
+
 span {
   text-transform: uppercase;
 }

@@ -15,6 +15,7 @@ const Controller = ({ hitButton, stayButton, winner, result, quitHandler, evolve
             <li>
               <button className='actionBtn' onClick={hitButton} disabled={winner !== 'none'}>Hit</button>
             </li>
+            <li className="actionOr">or</li>
             <li>
               <button className='actionBtn' onClick={stayButton} disabled={winner !== 'none'}>Stay</button>
             </li>
